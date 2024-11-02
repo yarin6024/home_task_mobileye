@@ -5,13 +5,19 @@ class Inventory:
     def __init__(self):
         self.products = []
 
-    # add product type as Product
-    def add_product(self, product: Product):
+    def is_product_exist(self, product: Product) -> bool:
+        product_exist = False
         for existing_product in self.products:
             if existing_product.get_name() == product.get_name():
-                print(f"Product with name {product.get_name()} already exists")
-            else:
-                self.products.append(product)
+                product_exist = True
+
+        return product_exist
+
+    def add_product(self, product: Product):
+        if self.is_product_exist(product):
+            print(f"Product with name {product.get_name()} already exists")
+        else:
+            self.products.append(product)
 
     def remove_product(self, product_name: str):
         self.products.remove(self.get_product(product_name=product_name))
@@ -34,4 +40,4 @@ class Inventory:
         return len(self.products)
 
     def total_quantity(self) -> int:
-        return sum(product.get_quantity() for product in self.products)
+        return sum(product.get for product in self.products)
