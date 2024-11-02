@@ -5,6 +5,9 @@ class Inventory:
     def __init__(self):
         self.products = []
 
+    def get_products(self) -> [Product]:
+        return self.products
+
     def is_product_exist(self, product: Product) -> bool:
         product_exist = False
         for existing_product in self.products:
