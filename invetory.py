@@ -26,3 +26,12 @@ class Inventory:
             print(f"There is no product with the name {product_name}")
 
         return wanted_product
+
+    def total_inventory_value(self) -> float:
+        return sum(product.get_price() * product.get_quantity() for product in self.products)
+
+    def product_count(self) -> int:
+        return len(self.products)
+
+    def total_quantity(self) -> int:
+        return sum(product.get_quantity() for product in self.products)
